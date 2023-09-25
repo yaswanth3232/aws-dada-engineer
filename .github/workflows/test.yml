@@ -1,0 +1,67 @@
+name: Backend CI
+
+ 
+
+on:
+
+  pull_request:
+
+    branches:
+
+      - main  # Specify the branch you want to trigger on (e.g., 'main')
+
+ 
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest  # Specify the runner environment
+
+ 
+
+    steps:
+
+    - name: Checkout code
+
+      uses: actions/checkout@v2  # This step checks out your repository's code.
+
+ 
+
+    - name: Set up Node.js
+
+      uses: actions/setup-node@v2
+
+      with:
+
+        node-version: 14  # You can specify the Node.js version you need.
+
+ 
+
+    - name: Install dependencies
+
+      run: npm install  # Use the appropriate package manager and command.
+
+ 
+
+    - name: Run backend tests
+
+      run: npm test-backend  # Replace with the actual command to run your backend tests.
+
+ 
+
+    - name: Deploy backend (example)
+
+      run: |
+
+        if [ "${{ github.event_name }}" == "push" ]; then
+
+          # Replace this with your deployment script or commands.
+
+          echo "Deploying backend..."
+
+          # Example: Deploy to a cloud service like AWS, Azure, or Heroku.
+
+          # Example: Restart backend service if necessary.
+
+        fi
